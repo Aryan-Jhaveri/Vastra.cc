@@ -96,6 +96,4 @@ Visit [vastra.cc](https://vastra.cc) to try the hosted version.
 
 ---
 
-## License
-
-[MIT](./LICENSE)
+&copy; 2026 Vastra. All rights reserved. Proprietary and confidential.
