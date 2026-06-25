@@ -51,7 +51,7 @@ Built as a progressive web app (PWA) installable on any device, it is designed f
 - **Scheduled reminders** — set recurring outfit nudges with push notification delivery
 - **Dark mode + themes** — Silk, MONO, and Royal palettes; persisted per account
 - **PWA** — installs on iOS, Android, and desktop; full offline read access
-- **Multi-user** — self-host for a household or deploy as a shared service; per-user data isolation throughout
+- **Multi-user** — full per-user accounts with isolated data, themes, and preferences
 
 ---
 
