@@ -4,7 +4,7 @@
 
 **Your personal stylist. Your personal inventory. Your personal smart wardrobe.**
 
-[![Vastra Demo](https://img.youtube.com/vi/6_iB2oVfOYs/maxresdefault.jpg)](https://youtube.com/shorts/6_iB2oVfOYs)
+https://github.com/user-attachments/assets/6c8c49a0-b35c-4935-8fe0-dd7c167b15dc
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React_18-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
