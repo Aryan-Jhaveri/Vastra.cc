@@ -4,9 +4,7 @@
 
 **Your personal stylist. Your personal inventory. Your personal smart wardrobe.**
 
-[![Demo](https://github.com/Aryan-Jhaveri/Vastra.cc/releases/download/v1.0/first-frame-centered.png)](https://github.com/Aryan-Jhaveri/Vastra.cc/releases/download/v1.0/full-music720.mp4)
-
-*Click the image above to watch the full demo*
+![Vastra Demo](./demo.mp4)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React_18-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
@@ -88,27 +86,6 @@ src/
   weather/    Open-Meteo + WMO condition mapping
   transport/
     web/      Express v5 API + React 18 SPA
-```
-
----
-
-## Getting started
-
-Requires **Node 20+** and a **Gemini API key** ([get one free](https://aistudio.google.com/app/apikey)).
-
-```bash
-git clone https://github.com/Aryan-Jhaveri/closet-saas.git
-cd closet-saas
-npm install
-cd src/transport/web/app && npm install && cd ../../../..
-cp .env.example .env   # add your GEMINI_API_KEY and WEB_AUTH_PASSWORD
-npm run web:dev        # Express :3000 + Vite :5173
-```
-
-Or with Docker:
-
-```bash
-docker compose up
 ```
 
 ---
