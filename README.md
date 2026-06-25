@@ -68,7 +68,7 @@ Built as a progressive web app (PWA) installable on any device, it is designed f
 | Auth | Email + Google OAuth, httpOnly session cookies |
 | Scheduling | Croner |
 | Push notifications | VAPID + web-push |
-| Testing | Vitest + Testing Library (200+ tests) |
+| Testing | Vitest + Testing Library (600+ tests) |
 | Deploy | Docker + Render |
 
 ---
