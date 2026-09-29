@@ -24,6 +24,12 @@ jobs:
       - name: Rebuild native modules
         run: npm rebuild better-sqlite3
 
+      # The root suite imports the frontend's vite.config.ts
+      # (test/transport/web/viteProxy.test.ts), so its plugins must resolve.
+      - name: Install frontend dependencies
+        working-directory: src/transport/web/app
+        run: npm install --ignore-scripts
+
       - name: Type check
         run: npx tsc --noEmit
 
