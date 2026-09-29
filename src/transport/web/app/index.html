@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Vastra</title>
+    <meta name="description" content="Personal wardrobe management" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vastra.cc" />
+    <meta property="og:title" content="Vastra" />
+    <meta property="og:description" content="Personal wardrobe management powered by AI" />
+    <meta property="og:image" content="https://vastra.cc/icons/icon-512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://vastra.cc/icons/icon-512.png" />
+    <!-- One un-scoped tag; lib/theme.ts applyTheme() rewrites content at runtime (#377). -->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Vastra" />
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)" href="/icons/apple-touch-icon-180.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)" href="/icons/apple-touch-icon-180.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" href="/icons/apple-touch-icon-180.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="/icons/apple-touch-icon-180.png" />
+  </head>
+  <body>
+    <div id="root">
+      <style>
+        #premount {
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          height: 100dvh; background: #fff; color: #0a0a0a; font-family: 'Space Mono', monospace;
+          gap: 24px;
+        }
+        #premount h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin: 0; }
+        #premount .dots { display: flex; gap: 8px; }
+        #premount .dots div {
+          width: 8px; height: 8px; background: #0a0a0a;
+          animation: bounce 1s ease-in-out infinite;
+        }
+        #premount .dots div:nth-child(2) { animation-delay: 0.15s; }
+        #premount .dots div:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        @media (prefers-color-scheme: dark) {
+          #premount { background: #0a0a0a; color: #f5f5f5; }
+          #premount .dots div { background: #f5f5f5; }
+        }
+      </style>
+      <div id="premount">
+        <h1>Vastra</h1>
+        <div class="dots"><div></div><div></div><div></div></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

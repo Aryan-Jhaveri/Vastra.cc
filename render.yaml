@@ -1,0 +1,42 @@
+# Self-hosted Vastra on Render (#315 Phase 3). The open-source export ships
+# this file as render.yaml at the root of Vastra.cc, which the README's
+# "Deploy to Render" button reads. (vastra.cc's own hosted blueprint is the
+# private root render.yaml and never ships.)
+#
+# After the first deploy, open the service's Shell and create your admin:
+#   node src/transport/web/admin/admin.mjs create-admin you@example.com
+# It prints a one-time sign-in link. Then pick AI providers: set the keys
+# below in Environment, or run `make setup TARGET=render` from a checkout
+# and paste what it prints.
+services:
+  - type: web
+    name: vastra
+    runtime: docker
+    # A persistent disk needs a paid instance type; starter is the smallest.
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/auth/status
+    disk:
+      name: vastra-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLOSET_DATA_DIR
+        value: /data
+      # Self-host: HOSTED_MODE stays unset (no wallet, no Stripe).
+      # Only accounts you create can sign in; set true for a household.
+      - key: ALLOW_SIGNUPS
+        value: "false"
+      # Mock mode until you add a model: the app boots without any key.
+      - key: MOCK_AI_IMAGE_GEN
+        value: "true"
+      - key: MOCK_EMBEDDINGS
+        value: "true"
+      # Your service's URL (https://<name>.onrender.com), used in sign-in links.
+      - key: WEB_APP_URL
+        sync: false
+      # Optional: a free key from https://aistudio.google.com/apikey
+      - key: GEMINI_API_KEY
+        sync: false

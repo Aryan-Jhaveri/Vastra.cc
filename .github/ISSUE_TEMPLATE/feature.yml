@@ -1,0 +1,60 @@
+name: Feature
+description: Propose a new feature or improvement
+labels: ["type:feat"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening: check `PRODUCT-BRIEF.md` (Now/Near/Mid/Horizon) and open `research/` issues to see if this is already specced.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What and why
+      description: What should this do, and why does it matter?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What does "done" look like? Bullet list of observable behaviors.
+      placeholder: |
+        - User can ...
+        - API returns ...
+        - Tests cover ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - ai
+        - db
+        - web
+        - telegram
+        - infra
+        - docs
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - now
+        - near
+        - mid
+        - horizon
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec
+    attributes:
+      label: Spec / research link
+      description: Link to `research/` doc or `notes/` draft if one exists.

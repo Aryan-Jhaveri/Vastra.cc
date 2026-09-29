@@ -1,0 +1,62 @@
+# Authenticated TLS gateway for a separate GPU box (#354). Only this gateway
+# is published; the model servers stay on the internal compose network.
+#
+#   docker compose --profile gpu --profile gateway up -d
+#
+# Clients (a Vastra instance on another machine) send
+#   Authorization: Bearer $GATEWAY_API_KEY
+# and use these base URLs (see DEPLOY.md):
+#   https://$GATEWAY_DOMAIN/vl/v1               chat + vision (Qwen3-VL-8B)
+#   https://$GATEWAY_DOMAIN/image/v1            image edits (Qwen-Image-2.1)
+#   https://$GATEWAY_DOMAIN/embed/v1            embeddings (Qwen3-VL-Embedding-2B)
+#   https://$GATEWAY_DOMAIN/clm/v1/systemone    decisions (CLM-8B)
+#
+# GATEWAY_DOMAIN set to a real domain gets a Let's Encrypt certificate
+# automatically; unset (localhost) uses Caddy's internal CA.
+
+{$GATEWAY_DOMAIN:localhost} {
+	request_body {
+		max_size 64MB
+	}
+
+	# `route` keeps the order below. Without it Caddy's default directive
+	# order runs `handle` before `respond`, and the key check never fires.
+	route {
+		# Reject before anything reaches a model. The upstream key is
+		# replaced below, so a client never needs (or sees) MODEL_API_KEY.
+		@unauthorized not header Authorization "Bearer {$GATEWAY_API_KEY}"
+		respond @unauthorized "Unauthorized" 401
+
+		handle /health {
+			respond "ok" 200
+		}
+
+		handle_path /vl/* {
+			reverse_proxy qwen-vl:8001 {
+				header_up Authorization "Bearer {$MODEL_API_KEY}"
+			}
+		}
+		handle_path /image/* {
+			reverse_proxy qwen-image:8091 {
+				header_up Authorization "Bearer {$MODEL_API_KEY}"
+				transport http {
+					response_header_timeout 600s
+				}
+			}
+		}
+		handle_path /embed/* {
+			reverse_proxy qwen-embed:8002 {
+				header_up Authorization "Bearer {$MODEL_API_KEY}"
+			}
+		}
+		handle_path /clm/* {
+			reverse_proxy clm:8700 {
+				header_up Authorization "Bearer {$MODEL_API_KEY}"
+			}
+		}
+
+		handle {
+			respond "Not found" 404
+		}
+	}
+}

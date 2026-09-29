@@ -1,0 +1,1 @@
+ALTER TABLE `outfits` ADD `cover_image_uri` text;

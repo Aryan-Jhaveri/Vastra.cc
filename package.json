@@ -1,0 +1,68 @@
+{
+  "name": "@closet/core",
+  "version": "2.0.0",
+  "description": "Personal wardrobe management — transport-agnostic core",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "test": "vitest run",
+    "test:selfhost": "vitest run --config vitest.selfhost.config.ts",
+    "web:dev": "concurrently \"tsx watch src/transport/web/server.ts\" \"npm run dev --prefix src/transport/web/app\"",
+    "web:build": "cd src/transport/web/app && npm run build",
+    "web": "NODE_ENV=production tsx src/transport/web/server.ts",
+    "dev": "tsx scripts/dev.ts",
+    "seed:dev": "tsx scripts/seed-dev.ts",
+    "seed:wardrobe": "tsx scripts/seed-wardrobe.ts",
+    "start": "NODE_ENV=production tsx src/combined.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1075.0",
+    "@google/genai": "1.46.0",
+    "@modelcontextprotocol/sdk": "1.30.1",
+    "@types/morgan": "^1.9.10",
+    "better-sqlite3": "12.8.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "croner": "^10.0.1",
+    "disposable-email-domains": "^1.0.62",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "0.45.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "google-auth-library": "^10.7.0",
+    "helmet": "^8.2.0",
+    "morgan": "^1.12.1",
+    "multer": "^2.4.0",
+    "nanoid": "^6.0.1",
+    "resend": "^6.14.0",
+    "sharp": "0.35.4",
+    "tsx": "^4.21.0",
+    "web-push": "^3.6.7",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^25.5.0",
+    "@types/supertest": "^7.2.0",
+    "@types/web-push": "^3.6.4",
+    "concurrently": "^10.0.5",
+    "drizzle-kit": "0.31.11",
+    "supertest": "^7.2.2",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1"
+  },
+  "overrides": {
+    "@esbuild-kit/core-utils": {
+      "esbuild": "^0.25.4"
+    }
+  }
+}

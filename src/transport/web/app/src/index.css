@@ -1,0 +1,434 @@
+@import "tailwindcss";
+
+/* Space Grotesk (SIL OFL, public/fonts/OFL.txt), self-hosted: the CSP allows no third-party font or style hosts, and Google Fonts would send every visitor's IP to Google. */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Grotesk', system-ui, sans-serif;
+
+  --radius: 5px;
+
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+  --color-muted: #444444;
+  --color-active: #1a1a1a;
+
+  --color-surface: #f5f5f5;
+  --color-surface-dim: #ebebeb;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f7f7f7;
+  --color-surface-container: #f0f0f0;
+  --color-surface-container-high: #e8e8e8;
+  --color-surface-container-highest: #e0e0e0;
+  --color-surface-variant: #e0e0e0;
+  --color-surface-tint: #5a5a5a;
+
+  --color-on-surface: #0a0a0a;
+  --color-on-surface-variant: #404040;
+  --color-inverse-surface: #1a1a1a;
+  --color-inverse-on-surface: #f0f0f0;
+
+  --color-outline: #666666;
+  --color-outline-variant: #bfbfbf;
+
+  --color-primary: #0a0a0a;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #e0e0e0;
+  --color-on-primary-container: #0a0a0a;
+  --color-inverse-primary: #8a8a8a;
+
+  --color-secondary: #4a4a4a;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e8e8e8;
+  --color-on-secondary-container: #2a2a2a;
+
+  --color-tertiary: #0a0a0a;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #1a1a1a;
+  --color-on-tertiary-container: #888888;
+
+  --color-error: #cc2200;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #8b1200;
+  --color-success: #1a7a3c;
+
+  --color-background: #f5f5f5;
+  --color-on-background: #0a0a0a;
+
+  --color-accent: #0a0a0a;
+  --color-accent-on: #ffffff;
+
+  --color-hover: #f0f0f0;
+  --color-selected: #0a0a0a;
+  --color-selected-on: #ffffff;
+  --color-shadow: #0a0a0a;
+
+  --spacing-layout-safe-bottom: 96px;
+}
+.dark {
+  --color-ink: #f5f5f5;
+  --color-paper: #0a0a0a;
+  --color-muted: #aaaaaa;
+  --color-active: #e8e8e8;
+
+  --color-surface: #141414;
+  --color-surface-dim: #0a0a0a;
+  --color-surface-bright: #1e1e1e;
+  --color-surface-container-lowest: #080808;
+  --color-surface-container-low: #101010;
+  --color-surface-container: #181818;
+  --color-surface-container-high: #222222;
+  --color-surface-container-highest: #303030;
+
+  --color-on-surface: #f5f5f5;
+  --color-on-surface-variant: #aaaaaa;
+
+  --color-primary: #f5f5f5;
+  --color-on-primary: #0a0a0a;
+
+  --color-background: #0a0a0a;
+  --color-on-background: #f5f5f5;
+
+  --color-outline: #444444;
+  --color-outline-variant: #2a2a2a;
+
+  --color-accent: #f5f5f5;
+  --color-accent-on: #0a0a0a;
+
+  --color-hover: #1e1e1e;
+  --color-selected: #f5f5f5;
+  --color-selected-on: #0a0a0a;
+  --color-shadow: rgba(255, 255, 255, 0.5);
+  --color-selected-on: #0a0a0a;
+}
+
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    overscroll-behavior-y: none;
+  }
+
+  /* Mobile app-shell: lock the document so scroll happens in an inner
+     container (#app-shell). Stops Firefox Android / iOS Safari from
+     resizing the address bar on scroll, which used to make the fixed
+     BottomNav nudge up/down between frames. */
+  @media (max-width: 767px) {
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      inset: 0;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Mobile: #root + #app-shell form the scroll viewport.
+     Both need an explicit height so #app-shell's overflow-y-auto has
+     something to clip against. */
+  #root {
+    height: 100%;
+  }
+  #app-shell {
+    height: 100%;
+  }
+  @media (min-width: 768px) {
+    #root, #app-shell {
+      height: auto;
+      overflow: visible;
+    }
+    html {
+      scrollbar-gutter: stable;
+    }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  /* ── WCAG 2.4.7 / 2.4.11 — Visible focus indicators ─── */
+  /* Only shows on keyboard nav, not mouse clicks */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+  /* Remove browser default outlines — we own this */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  /* ── Typography (Space Grotesk + Space Mono) ──────────── */
+  /* Space Grotesk is naturally tighter at bold weights — push sizes up */
+
+  .text-headline-lg {
+    font-family: var(--font-sans);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+  }
+
+  .text-headline-md {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .text-body-md {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  .text-label-bold {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .text-label-sm {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .text-metadata-xs {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .text-button {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Flat offset shadows (neobrutalist) ───────────────── */
+  .shadow-flat-xs { box-shadow: 2px 2px 0px 0px var(--color-shadow); }
+  .shadow-flat-sm { box-shadow: 3px 3px 0px 0px var(--color-shadow); }
+  .shadow-flat-md { box-shadow: 4px 4px 0px 0px var(--color-shadow); }
+  .shadow-flat-lg { box-shadow: 6px 6px 0px 0px var(--color-shadow); }
+
+  .rounded-base { border-radius: var(--radius); }
+}
+
+/* Modal wrappers anchor against the resizable desktop nav.
+ * --nav-w is written by useNavWidth; default here is for first paint. */
+:root { --nav-w: 11rem; }
+
+@media (min-width: 768px) {
+  .nav-anchor-right { right: var(--nav-w); }
+}
+
+/* ── Page transition animations (JS-driven, classes kept for stagger utility) ── */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 300ms ease-out both;
+}
+
+.animate-slide-up {
+  animation: slide-up 300ms ease-out both;
+}
+
+/* Stagger children for card grids */
+.animate-stagger > * {
+  opacity: 0;
+  animation: fade-in 250ms ease-out forwards;
+}
+
+.animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.animate-stagger > *:nth-child(2) { animation-delay: 40ms; }
+.animate-stagger > *:nth-child(3) { animation-delay: 80ms; }
+.animate-stagger > *:nth-child(4) { animation-delay: 120ms; }
+.animate-stagger > *:nth-child(5) { animation-delay: 160ms; }
+.animate-stagger > *:nth-child(6) { animation-delay: 200ms; }
+.animate-stagger > *:nth-child(7) { animation-delay: 240ms; }
+.animate-stagger > *:nth-child(8) { animation-delay: 280ms; }
+.animate-stagger > *:nth-child(9) { animation-delay: 320ms; }
+.animate-stagger > *:nth-child(10) { animation-delay: 360ms; }
+
+/* Scale-in entrance for card grids */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; }
+}
+
+.animate-grid-in > * {
+  opacity: 0;
+  animation: scale-in 250ms ease-out forwards;
+}
+
+.animate-grid-in > *:nth-child(1)  { animation-delay: 0ms; }
+.animate-grid-in > *:nth-child(2)  { animation-delay: 40ms; }
+.animate-grid-in > *:nth-child(3)  { animation-delay: 80ms; }
+.animate-grid-in > *:nth-child(4)  { animation-delay: 120ms; }
+.animate-grid-in > *:nth-child(5)  { animation-delay: 160ms; }
+.animate-grid-in > *:nth-child(6)  { animation-delay: 200ms; }
+.animate-grid-in > *:nth-child(7)  { animation-delay: 240ms; }
+.animate-grid-in > *:nth-child(8)  { animation-delay: 280ms; }
+.animate-grid-in > *:nth-child(9)  { animation-delay: 320ms; }
+.animate-grid-in > *:nth-child(10) { animation-delay: 360ms; }
+
+/* ── Select-mode animations ───────────────── */
+@keyframes border-march {
+  0% {
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  }
+  100% {
+    background-position: 12px 0, 100% 12px, calc(100% - 12px) 100%, 0 calc(100% - 12px);
+  }
+}
+
+.animate-border-march::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image:
+    repeating-linear-gradient(to right, var(--color-muted) 0 7px, transparent 7px 12px),
+    repeating-linear-gradient(to bottom, var(--color-muted) 0 7px, transparent 7px 12px),
+    repeating-linear-gradient(to left, var(--color-muted) 0 7px, transparent 7px 12px),
+    repeating-linear-gradient(to top, var(--color-muted) 0 7px, transparent 7px 12px);
+  background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  animation: border-march 0.8s linear infinite;
+  will-change: background-position;
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.reveal-card.reveal-card--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  .animate-border-march::before {
+    animation: none;
+  }
+  .page-transition,
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-stagger > *,
+  .animate-grid-in > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .animate-skeleton-pulse {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ── Skeleton pulse ── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.15; }
+}
+
+.animate-skeleton-pulse {
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+/* In custom palettes, borders that use ink follow the selected tertiary color. */
+html.custom-palette [class~="border-ink"],
+html.custom-palette [class~="border-t-ink"],
+html.custom-palette [class~="border-r-ink"],
+html.custom-palette [class~="border-b-ink"],
+html.custom-palette [class~="border-l-ink"] {
+  border-color: var(--color-tertiary);
+}

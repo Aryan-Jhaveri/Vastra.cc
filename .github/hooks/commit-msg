@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Enforces conventional commit format:  type(scope): description
+# Install: copy to .git/hooks/commit-msg and chmod +x
+# Or run: bash scripts/setup-hooks.sh
+
+MSG=$(cat "$1")
+
+# Pass through merge commits, reverts, and fixup/squash
+if echo "$MSG" | grep -qE '^(Merge |Revert "|fixup! |squash! )'; then
+  exit 0
+fi
+
+TYPES="feat|fix|docs|chore|refactor|test|style|perf|ci|revert|wip|notes"
+PATTERN="^($TYPES)(\([a-zA-Z0-9._/-]+\))?: .{1,80}"
+
+if ! echo "$MSG" | grep -qP "$PATTERN"; then
+  echo ""
+  echo "  ✗  Commit message does not follow conventional commits format."
+  echo ""
+  echo "  Required:  type(scope): short description"
+  echo "  Example:   feat(ai): add garment context to try-on prompt"
+  echo ""
+  echo "  Valid types: feat | fix | docs | chore | refactor | test | style | perf | ci | revert | wip | notes"
+  echo ""
+  echo "  Your message:"
+  echo "  $MSG"
+  echo ""
+  exit 1
+fi
+
+exit 0

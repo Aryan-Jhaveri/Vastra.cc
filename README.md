@@ -17,83 +17,137 @@ https://github.com/user-attachments/assets/6c8c49a0-b35c-4935-8fe0-dd7c167b15dc
 
 ## What is Vastra?
 
-Vastra is an AI-powered wardrobe management app. Photograph your clothes — Vastra categorises them instantly, suggests weather-aware outfits, and lets you virtually try on combinations before you open your closet.
+Vastra is a wardrobe app you run yourself. Photograph your clothes and it
+categorises them, suggests outfits for today's weather, and lets you try
+combinations on virtually before you open the closet. It installs as a PWA on
+phones and desktops, and supports several accounts on one instance, each with
+its own isolated closet.
 
-Built as a progressive web app (PWA) installable on any device, it is designed for anyone who wants a smarter relationship with their wardrobe.
+- **Closet:** photo → AI fills in category, colours, season and occasion. Scan a
+  care label for brand, size and material. Keep several views per item.
+- **Outfits:** weather-aware suggestions, a manual outfit builder, collections,
+  and scheduled reminders with push notifications.
+- **Try-on:** put closet items (or garments from anywhere) on a photo of
+  yourself, with an optional instruction.
+- **Discover:** upload an inspiration photo (or open a shared outfit link), and
+  Vastra finds matching pieces and outfits in your closet.
+- **Ask:** a chat agent over your closet, weather and outfits.
+- **MCP server:** connect your own agent (Claude Code, Claude Desktop, and other
+  MCP clients) with a personal token. See [MCP.md](MCP.md).
 
----
+## Quick start (Docker)
 
-## Features
+You need Docker with the Compose plugin.
 
-### Closet management
-- **Photo → AI categorise** — snap a photo; Gemini vision auto-fills category, colour, season, and occasion tags in one step
-- **Care-label OCR** — scan the tag on a garment to extract brand, size, material, and care instructions
-- **Multi-view gallery** — store front, back, side, and detail shots per item; AI generates a polished hero thumbnail from multiple views
-- **Filters** — colour, season, occasion, brand, and custom free-text tags across the full closet grid
+```bash
+git clone https://github.com/Aryan-Jhaveri/Vastra.cc.git vastra
+cd vastra
+./install.sh
+```
 
-### Outfit tools
-- **Weather-aware suggestions** — live weather fetch drives outfit recommendations for the conditions right now
-- **Outfit builder** — drag items together, set a cover photo, name and occasion-tag the outfit
-- **Collections** — curate themed bundles of saved outfits (travel, work, festival, etc.)
-- **Inline editing** — rename, retag, and update outfits without leaving the detail view
+The installer writes `.env`, starts the stack and offers `make setup` to pick
+AI providers (Gemini, OpenRouter, or your own Ollama). Then create your account,
+which prints a one-time sign-in link:
 
-### Virtual try-on
-- Select items from your closet, combine them, and generate an AI try-on image
-- Upload ad-hoc garments (online finds, inspiration images) alongside closet items
-- Add a natural-language instruction to guide the result (pose, background, style)
-- Full try-on history with one-tap save and share
+```bash
+docker compose exec closet node src/transport/web/admin/admin.mjs create-admin you@example.com
+```
 
-### Discovery & sharing
-- **Discover mode** — describe a vibe in words or upload an inspiration image; Vastra surfaces matching outfits from your closet
-- **Share links** — send any outfit to a friend via a public link with expiry; no account required to view
+Open http://localhost:3000. With no API keys at all, Vastra starts in mock mode
+so you can look around first. Only accounts you create can sign in until you set
+`ALLOW_SIGNUPS=true`. [DEPLOY.md](DEPLOY.md) covers GPU model servers, Ollama on
+a Mac, HTTPS, updates and backups.
 
-### Platform & personalisation
-- **Scheduled reminders** — set recurring outfit nudges with push notification delivery
-- **Dark mode + themes** — Silk, MONO, and Royal palettes; persisted per account
-- **PWA** — installs on iOS, Android, and desktop; full offline read access
-- **Multi-user** — full per-user accounts with isolated data, themes, and preferences
+## Deploy to Render
 
----
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Aryan-Jhaveri/Vastra.cc)
 
-## Tech Stack
+One click in the browser, no CLI. It needs a paid instance for the persistent
+disk. After the first deploy, open the service's **Shell** and run the
+`create-admin` command above; see [DEPLOY.md](DEPLOY.md#render).
+
+## Local development
+
+Node 22 is what the Docker image uses.
+
+```bash
+npm install
+(cd src/transport/web/app && npm install)
+cp .env.example .env      # at minimum set GEMINI_API_KEY, or keep the mocks
+npm run web:dev           # API on :3000, Vite on :5173
+```
+
+Open http://localhost:5173. Sign in with your email: without a mail provider
+configured, the sign-in link is printed in the server log (in dev, open it on
+port 5173 instead of 3000). Migrations run
+automatically when the server starts.
+
+## AI keys: three layers
+
+You can go from zero cost to fully real AI one step at a time.
+
+| Layer | What you get | How |
+|---|---|---|
+| **Mock** (default) | Try-on, image generation and embeddings return fixtures; nothing is billed | `MOCK_AI_IMAGE_GEN=true`, `MOCK_EMBEDDINGS=true` |
+| **Gemini key** | Real categorise, tag scan, suggestions and chat | `GEMINI_API_KEY` from [aistudio.google.com/apikey](https://aistudio.google.com/apikey) (free tier) |
+| **Your own models or providers** | Real image generation and embeddings, other vendors, or no cloud at all | See below |
+
+Options for the third layer, all set by the instance operator in `.env`:
+
+- **Vertex AI:** set `GCP_PROJECT_ID` and `GOOGLE_APPLICATION_CREDENTIALS`, and
+  Gemini calls bill to your Google Cloud project.
+- **OpenRouter:** set `OPENROUTER_API_KEY`. Any model id containing a `/`
+  (for example `mistralai/mistral-small-3.2-24b-instruct`) routes through it.
+- **Local models:** any OpenAI-compatible server (Ollama, llama.cpp, vLLM, LM
+  Studio). Set `OPENAI_COMPAT_BASE_URL` and prefix a model id with `local/`,
+  e.g. `VISION_MODEL=local/qwen3-vl-8b`. Local calls cost nothing.
+- **Decision provider** (ranking and "Find related"): `DECISIONS_PROVIDER` is
+  `openrouter` (default, uses `OPENROUTER_API_KEY`), `typesafe` (a
+  TypeSafe-compatible server at `DECISIONS_URL`), or `llm` (any chat model via
+  `DECISIONS_MODEL`). With none configured, Related sections are hidden and
+  ranking falls back to simpler ordering.
+
+Every variable is documented in `.env.example`.
+
+## Tech stack
 
 | Layer | Technology |
 |---|---|
-| Language | TypeScript (ESM), Node 20 |
+| Language | TypeScript (ESM) on Node |
 | Database | SQLite + Drizzle ORM |
-| AI | Google Gemini (vision + generation + embeddings) |
-| Image processing | Sharp |
+| AI | Gemini, OpenRouter or any OpenAI-compatible server |
 | Backend | Express v5 |
-| Frontend | React 18, Vite, Tailwind CSS v4, Radix UI, Lucide icons |
-| Auth | Email + Google OAuth, httpOnly session cookies |
+| Frontend | React 18, Vite, Tailwind CSS v4, Radix UI |
 | Scheduling | Croner |
-| Push notifications | VAPID + web-push |
-| Testing | Vitest + Testing Library (600+ tests) |
-| Deploy | Docker + Render |
-
----
+| Push | VAPID + web-push |
+| Tests | Vitest + Testing Library |
 
 ## Architecture
 
-The core — AI, database, and business logic — is transport-agnostic. Any new client (mobile app, CLI, etc.) reuses the same tool functions without touching AI or database code.
+The core (database, tools and AI) doesn't depend on the web layer, so another
+client can reuse the same functions.
 
 ```
 src/
-  ai/         Gemini: categorise, suggest, tryon, heroImage, discover
-  db/         SQLite + Drizzle schema and migrations
-  storage/    Image compression (Sharp)
-  tools/      Core logic shared across all transports
-  weather/    Open-Meteo + WMO condition mapping
+  ai/         categorise, suggest, try-on, hero image, discover, chat
+  agent/      the Ask agent and its tool registry (also served over MCP)
+  db/         SQLite schema, queries and migrations
+  storage/    image compression and per-user storage
+  tools/      core logic shared by every transport
+  weather/    Open-Meteo forecasts
   transport/
-    web/      Express v5 API + React 18 SPA
+    web/      Express API + React PWA
+    mcp/      MCP server
 ```
 
----
+## Contributing
 
-## Live demo
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Visit [vastra.cc](https://vastra.cc) to try the hosted version.
+## License
 
----
+Vastra is free software, licensed under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0-only).
 
-&copy; 2026 Vastra. All rights reserved. Proprietary and confidential.
+If you run a modified version of Vastra as a network service, the AGPL requires you to offer your users the source of that modified version.
+
+&copy; 2026 Vastra.

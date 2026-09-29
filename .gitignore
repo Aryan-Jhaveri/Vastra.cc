@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+src/transport/web/app/node_modules/
+.obsidian
+references/
+.IMPLEMENTATION.md.swp
+closet_bw_neobrutalist_mockup.html
+*.swp
+IMPLEMENTATIONS.md
+
+
+# Environment variables
+.env
+.env.local
+
+# Build outputs
+dist/
+src/transport/web/app/dist/
+*.tsbuildinfo
+
+# Editor/OS files
+.DS_Store
+**/.DS_Store
+*.swp
+**/*.swp
+.vscode/
+.idea/
+
+# Research and References (as requested)
+CLAUDE.md
+references/
+closet-mockup/
+research/
+prototypes/
+
+# AI-generated drafts + working notes (kept local only)
+notes/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Personal Notes
+notes/personal/
+
+# Local dev data dir (DB + images). Never commit: it holds personal closet data.
+.closet/
+
+# #296 benchmark output (built from private closet data)
+bench-results/

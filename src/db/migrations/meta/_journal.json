@@ -1,0 +1,307 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1774205273772,
+      "tag": "0000_fearless_mach_iv",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1774664253900,
+      "tag": "0001_lyrical_black_tom",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1774667834232,
+      "tag": "0002_closed_steve_rogers",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1774740346966,
+      "tag": "0003_slow_vulcan",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1743206400000,
+      "tag": "0004_material_source",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1774911775453,
+      "tag": "0005_spicy_northstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1775769042983,
+      "tag": "0006_complete_khan",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1780866233783,
+      "tag": "0007_simple_ben_parker",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1780954332801,
+      "tag": "0008_harsh_thor_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1780955584001,
+      "tag": "0009_brainy_meggan",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1780966416896,
+      "tag": "0010_mighty_psynapse",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1781120682849,
+      "tag": "0011_clean_quicksilver",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1781124731677,
+      "tag": "0012_suggest_events",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1781125238024,
+      "tag": "0013_discover_events",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1781197626454,
+      "tag": "0014_blushing_owl",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "6",
+      "when": 1781200000000,
+      "tag": "0015_settings_user_id",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "6",
+      "when": 1781222686084,
+      "tag": "0016_ordinary_archangel",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "6",
+      "when": 1781572819240,
+      "tag": "0017_tough_lifeguard",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1781700000000,
+      "tag": "0018_curious_shard",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "6",
+      "when": 1781657389652,
+      "tag": "0019_plain_dorian_gray",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "6",
+      "when": 1781750000000,
+      "tag": "0020_fix_skipped_occasion",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "6",
+      "when": 1783150000000,
+      "tag": "0021_openrouter_user_keys",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "6",
+      "when": 1783590000000,
+      "tag": "0022_oauth_provider_unique",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "6",
+      "when": 1783590000001,
+      "tag": "0023_wallet_ledger_idempotency",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "6",
+      "when": 1783600000000,
+      "tag": "0024_system_settings_password",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "6",
+      "when": 1783600000001,
+      "tag": "0025_users_accepted_terms",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "6",
+      "when": 1783600000002,
+      "tag": "0026_share_inbox_columns",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "6",
+      "when": 1783600000003,
+      "tag": "0027_users_email_verified_at",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "6",
+      "when": 1783700000000,
+      "tag": "0028_ai_calls_detail_links",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "6",
+      "when": 1783700000001,
+      "tag": "0029_users_is_admin",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "6",
+      "when": 1783700000002,
+      "tag": "0030_agent_readiness",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "6",
+      "when": 1783700000003,
+      "tag": "0031_item_formality",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "6",
+      "when": 1783700000004,
+      "tag": "0032_drop_item_formality",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "6",
+      "when": 1783700000005,
+      "tag": "0033_liked_products",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "6",
+      "when": 1783700000006,
+      "tag": "0034_liked_products_ids_only",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "6",
+      "when": 1783700000007,
+      "tag": "0035_api_tokens",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "6",
+      "when": 1783700000008,
+      "tag": "0036_agent_chat",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "6",
+      "when": 1783700000009,
+      "tag": "0037_item_create_keys",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "6",
+      "when": 1783700000010,
+      "tag": "0038_ai_calls_cost_known",
+      "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "6",
+      "when": 1783700000011,
+      "tag": "0039_related_requests",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "6",
+      "when": 1783700000012,
+      "tag": "0040_ai_calls_price_schedule",
+      "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "6",
+      "when": 1783700000013,
+      "tag": "0041_sessions_token_hash",
+      "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "6",
+      "when": 1783700000014,
+      "tag": "0042_outfits_updated_at",
+      "breakpoints": true
+    }
+  ]
+}

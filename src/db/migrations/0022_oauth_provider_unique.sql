@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `oauth_provider_unique` ON `oauth_accounts` (`provider`, `provider_id`);
