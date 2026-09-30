@@ -6,6 +6,8 @@
 
 https://github.com/user-attachments/assets/6c8c49a0-b35c-4935-8fe0-dd7c167b15dc
 
+https://github.com/user-attachments/assets/3e08c091-c22c-49e7-976d-fb5ede8b3f09
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React_18-61DAFB?style=flat&logo=react&logoColor=black)](https://reactjs.org/)
 [![Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=flat&logo=google&logoColor=white)](https://ai.google.dev/)
